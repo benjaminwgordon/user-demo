@@ -20,12 +20,6 @@ router.post("/submit", passport.authenticate(
   }
 );
 
-router.get("/logout", function(req, res, next){
-  if (err) {next(err)};
-  req.logout();
-});
-
-
 module.exports = router;
 
 

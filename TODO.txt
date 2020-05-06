@@ -1,0 +1,3 @@
+create a route for individual users once logged in
+
+create a route to write a message

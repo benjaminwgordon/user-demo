@@ -5,6 +5,9 @@ const express = require('express');
 const User = require('./models/User');
 const Message = require('./models/Message')
 const morgan = require('morgan');
+const path = require('path');
+const loginRouter = require('./routes/log-in');
+const signUpRouter = require('./routes/sign-up');
 
 const app = express();
 app.use(morgan('dev'));
@@ -20,11 +23,8 @@ mongoose.connect(mongoDb, {useUnifiedTopology:true, useNewUrlParser:true});
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "mongo connection error"));
 
-// app.use('/', require('./routes/index'));
-// app.use('/log-in', require('./routes/log-in'));
-// app.use('/sign-up', require('./routes/sign-up'));
-
-const routes = require('./routes');
-app.use(routes);
+app.use('/', loginRouter);
+app.use('/sign-up', signUpRouter);
+app.use('/log-out', require('./routes/log-out'))
 
 app.listen(3000, () => console.log("app listening on port 3000!"));
