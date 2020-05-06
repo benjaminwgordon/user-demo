@@ -4,16 +4,11 @@ const User = require('../models/User')
 var router = express.Router();
 
 
-router.get('/log-in', function(req,res) {
+router.get('/', function(req,res) {
     res.render('log-in', {
       user:req.user
     });
 });
-
-router.get('/sign-up', function(req,res){
-    res.redirect('/sign-up');
-})
-
 
 router.post("/submit", passport.authenticate(
   "local",
